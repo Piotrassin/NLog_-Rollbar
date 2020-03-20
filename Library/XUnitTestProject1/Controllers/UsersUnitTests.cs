@@ -45,21 +45,22 @@ namespace XUnitTestProject1.Controllers
         public async Task AddUser_201Ok()
         {
             var m = new Mock<IUserRepository>();
-            var newUser = new User
+            var newUser = new UserDto
             {
-                IdUser = 995,
                 Name = "Mirek",
                 Email = "mir@gmail.com",
                 Login = "Pogomir",
                 Surname = "Pogoda"
             };
-
-            /// Błąd w tych linijkach: newUser raz powinien byż typu Entities.User, a gdzie indziej UserDto.
-
-            //m.Setup(x => x.AddUser(newUser)).Returns(Task.FromResult(newUser));
+            var resultUser = new User();
+            m.Setup(x => x.AddUser(newUser)).Returns(Task.FromResult(resultUser));
             var controller = new UsersController(m.Object);
 
-            // var result = await controller.AddUser(newUser);
+
+            var result = await controller.AddUser(newUser);
+
+
+            Assert.True(result is CreatedAtRouteResult);
         }
 
         [Fact]
