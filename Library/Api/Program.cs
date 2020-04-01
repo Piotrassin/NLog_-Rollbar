@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
@@ -10,7 +11,21 @@ namespace Library
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            var s17437logger = NLog.Web.NLogBuilder.ConfigureNLog("s17437nlog.config").GetCurrentClassLogger();
+
+            try
+            {
+
+
+                s17437logger.Debug("app initialized");
+                CreateWebHostBuilder(args).Build().Run();
+            }
+            catch (System.Exception exception)
+            {
+                s17437logger.Error(exception, "Program spadł z rowerka");
+                throw;
+            }
+            
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
