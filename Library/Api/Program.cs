@@ -4,6 +4,12 @@ using System.Reflection;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using NLog;
+using NLog.Web;
+using Rollbar;
+using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 
 namespace Library
 {
@@ -15,15 +21,22 @@ namespace Library
 
             try
             {
+                RollbarLocator.RollbarInstance.Configure(new RollbarConfig("6b6bf76c663e4a6691f519ea33b89d6d"));
+                RollbarLocator.RollbarInstance.Info("Rollbar is configured properly.");
 
-
-                s17437logger.Debug("app initialized");
+                s17437logger.Debug("aplikacja działa");
+                RollbarLocator.RollbarInstance.Info("App has started.");
                 CreateWebHostBuilder(args).Build().Run();
             }
             catch (System.Exception exception)
             {
                 s17437logger.Error(exception, "Program spadł z rowerka");
+                RollbarLocator.RollbarInstance.Error("App encountered an exception.");
                 throw;
+            }
+            finally
+            {
+                LogManager.Shutdown();
             }
             
         }
@@ -40,6 +53,12 @@ namespace Library
                         .AddUserSecrets(appAssembly, optional: true)
                         .AddEnvironmentVariables();
                 })
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+                    logging.SetMinimumLevel(LogLevel.Trace);
+                }).UseNLog();
+
     }
 }

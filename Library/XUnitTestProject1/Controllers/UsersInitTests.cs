@@ -25,6 +25,7 @@ namespace XUnitTestProject1.Controllers
         {
             _server = ServerFactory.GetServerInstance();
             _client = _server.CreateClient();
+            var s17437logger = NLog.Web.NLogBuilder.ConfigureNLog("s17437nlog.config").GetCurrentClassLogger();
 
 
             using (var scope = _server.Host.Services.CreateScope())

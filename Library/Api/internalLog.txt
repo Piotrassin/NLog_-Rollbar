@@ -1,0 +1,58 @@
+2020-04-01 17:18:00.6070 Info Message Template Auto Format enabled
+2020-04-01 17:18:00.7212 Info Loading assembly: NLog.Web.AspNetCore
+2020-04-01 17:18:01.2545 Info Adding target FileTarget(Name=alldata)
+2020-04-01 17:18:01.3503 Info Adding target FileTarget(Name=otherFile-web)
+2020-04-01 17:18:01.4599 Info Adding target DatabaseTarget(Name=database)
+2020-04-01 17:18:01.8445 Info Found 78 configuration items
+2020-04-01 17:18:23.9767 Error DatabaseTarget(Name=database): Error when writing to database. Exception: System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) ---> System.ComponentModel.Win32Exception (2): Nie można odnaleźć określonego pliku
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at NLog.Targets.DatabaseTarget.OpenConnection(String connectionString, LogEventInfo logEventInfo)
+   at NLog.Targets.DatabaseTarget.EnsureConnectionOpen(String connectionString, LogEventInfo logEventInfo)
+   at NLog.Targets.DatabaseTarget.WriteLogEventToDatabase(LogEventInfo logEvent, String connectionString)
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:2,State:0,Class:20
+2020-04-01 17:28:00.0443 Info Message Template Auto Format enabled
+2020-04-01 17:28:00.2047 Info Loading assembly: NLog.Web.AspNetCore
+2020-04-01 17:28:00.8968 Info Adding target FileTarget(Name=alldata)
+2020-04-01 17:28:00.9186 Info Adding target FileTarget(Name=otherFile-web)
+2020-04-01 17:28:00.9668 Info Adding target DatabaseTarget(Name=database)
+2020-04-01 17:28:01.1233 Info Found 78 configuration items
+2020-04-01 17:29:16.2952 Info Message Template Auto Format enabled
+2020-04-01 17:29:16.3849 Info Loading assembly: NLog.Web.AspNetCore
+2020-04-01 17:29:16.7330 Info Adding target FileTarget(Name=alldata)
+2020-04-01 17:29:16.7563 Info Adding target FileTarget(Name=otherFile-web)
+2020-04-01 17:29:16.8059 Info Adding target DatabaseTarget(Name=database)
+2020-04-01 17:29:16.9702 Info Found 78 configuration items
+2020-04-01 18:23:36.8572 Info Message Template Auto Format enabled
+2020-04-01 18:23:36.8878 Info Loading assembly: NLog.Web.AspNetCore
+2020-04-01 18:23:37.0396 Info Adding target FileTarget(Name=alldata)
+2020-04-01 18:23:37.0548 Info Adding target FileTarget(Name=otherFile-web)
+2020-04-01 18:23:37.0760 Info Adding target DatabaseTarget(Name=database)
+2020-04-01 18:23:37.1289 Info Found 78 configuration items
+2020-04-01 18:43:04.9221 Info Message Template Auto Format enabled
+2020-04-01 18:43:05.0821 Info Loading assembly: NLog.Web.AspNetCore
+2020-04-01 18:43:05.4070 Info Adding target FileTarget(Name=alldata)
+2020-04-01 18:43:05.4394 Info Adding target FileTarget(Name=otherFile-web)
+2020-04-01 18:43:05.4691 Info Adding target DatabaseTarget(Name=database)
+2020-04-01 18:43:05.5447 Info Found 74 configuration items
+2020-04-01 18:43:06.9980 Error DatabaseTarget(Name=database): Error when writing to database. Exception: System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.SqlClient.SqlConnection.PermissionDemand()
+   at System.Data.SqlClient.SqlConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at NLog.Targets.DatabaseTarget.OpenConnection(String connectionString, LogEventInfo logEventInfo)
+   at NLog.Targets.DatabaseTarget.EnsureConnectionOpen(String connectionString, LogEventInfo logEventInfo)
+   at NLog.Targets.DatabaseTarget.WriteLogEventToDatabase(LogEventInfo logEvent, String connectionString)
